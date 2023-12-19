@@ -12,10 +12,10 @@ public class Company {
 	private int id;
 	private String name;
 	private String gst;
+
 	
 	@OneToMany
 	private List<Employee> employees;
-
 
 	public int getId() {
 		return id;

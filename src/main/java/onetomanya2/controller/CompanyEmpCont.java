@@ -38,5 +38,24 @@ public static void main(String[] args) {
 	
 	EmployeeDao employeeDao=new EmployeeDao();
 	employeeDao.saveEmployee(1, employee);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 }
