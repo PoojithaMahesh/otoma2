@@ -23,7 +23,7 @@ public class EmployeeDao {
 		
 		if(dbCompany!=null) {
 //			that company exist then i can add employes to this company
-//			i just want to save this company and also i want to updare company's list of employee
+//			i just want to save this employee and also i want to update company's list of employee
 			EntityTransaction entityTransaction=entityManager.getTransaction();
 			entityTransaction.begin();
 			entityManager.persist(employee);
@@ -43,16 +43,70 @@ public class EmployeeDao {
 			System.out.println("Sorry that id is not present");
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
+	}
+	
+	
+	
+	public void updateEmployee(int id,Employee employee) {
+		EntityManager entityManager=getEntityManager();
+		Employee dbEmployee=entityManager.find(Employee.class, id);
+		if(dbEmployee!=null) {
+//			id is present and then i can update the data
+			EntityTransaction entityTransaction=entityManager.getTransaction();
+			entityTransaction.begin();
+			employee.setId(id);
+			entityManager.merge(employee);
+			entityTransaction.commit();
+		}else {
+			System.out.println("Sorry id is not present");
+		}
 		
 		
 		
 	}
+	
+	
+	public void findEmployee(int id) {
+		EntityManager entityManager=getEntityManager();
+		Employee dbEmployee=entityManager.find(Employee.class, id);
+		if(dbEmployee!=null) {
+	        System.out.println(dbEmployee);
+		}else {
+			System.out.println("Sorry id is not present");
+		}
+		
+		
+	}
+	
+	public void deleteEmployee(int id) {
+		EntityManager entityManager=getEntityManager();
+		Employee dbEmployee=entityManager.find(Employee.class, id);
+		if(dbEmployee!=null) {
+	       EntityTransaction entityTransaction=entityManager.getTransaction();
+	       entityTransaction.begin();
+	       entityManager.remove(dbEmployee);
+	       entityTransaction.commit();
+		}else {
+			System.out.println("Sorry id is not present");
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
